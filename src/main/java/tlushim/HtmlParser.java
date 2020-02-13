@@ -87,7 +87,7 @@ public class HtmlParser
         return null;
     }
     
-    private static String getTableRows(Document page) {
+    private String getTableRows(Document page) {
         StringBuilder cleanCells = new StringBuilder();
         try {
             Element table = page.select("table[class=atnd]").get(0);
