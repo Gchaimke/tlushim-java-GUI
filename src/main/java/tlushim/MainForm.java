@@ -5,6 +5,7 @@
  */
 package tlushim;
 
+import java.util.concurrent.*;
 /**
  *
  * @author gchaim
@@ -14,6 +15,7 @@ public class MainForm extends javax.swing.JFrame {
     private static String user = "326988425";
     private static String pass = "Sdrm1415";
     private static String site = "https://www.tlushim.co.il/main.php?op=start";
+    private String data;
     int progress = 90;
     /**
      * Creates new form MainForm
@@ -207,24 +209,28 @@ public class MainForm extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        
-        HtmlParser parse = new HtmlParser(tfUser.getText(),pfPass.getText(),site);
         jProgressBar1.setIndeterminate(true);
-        String data = parse.getData();
-        //moreHours.setText(data);
-        jProgressBar1.setIndeterminate(false); 
-        jProgressBar1.setString(null);
-        jProgressBar1.setValue(progress);
+        HtmlParser parse = new HtmlParser(tfUser.getText(),pfPass.getText(),site);
+        ExecutorService executor = Executors.newFixedThreadPool(5);
+        
+        // Callable, return a future, submit and run the task async
+        Future<String> futureTask1 = executor.submit(() -> {
+            data = "test";
+            String data = parse.getData();
+            System.out.println("I'm Callable task.");
+            moreHours.setText("ok");
+            jProgressBar1.setIndeterminate(false);
+            return data;
+        });
+        
+        //String data = parse.getData();
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        HtmlParser parse = new HtmlParser(user,pass,site);
-        MainForm form = new MainForm();
-        //String data = parse.getData();
-        //System.out.println(data);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -247,7 +253,6 @@ public class MainForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
