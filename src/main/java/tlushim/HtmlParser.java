@@ -9,13 +9,13 @@ package tlushim;
  *
  * @author gchaim
  */
+import java.io.IOException;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -82,9 +82,9 @@ public class HtmlParser
             }
             return getTableRows(homePage);
         }catch (IOException ex){
-            System.out.println("Error"+ex);
+            System.out.println("Error: "+ex);
+            return "error";
         }
-        return null;
     }
     
     private String getTableRows(Document page) {
