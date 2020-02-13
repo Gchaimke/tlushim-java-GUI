@@ -12,14 +12,10 @@ import java.util.concurrent.*;
  */
 public class MainForm extends javax.swing.JFrame {
     // instance variables - replace the example below with your own
-    private static String user = "326988425";
-    private static String pass = "Sdrm1415";
-    private static String site = "https://www.tlushim.co.il/main.php?op=start";
+    private static final String SITE = "https://www.tlushim.co.il/main.php?op=start";
     private String data;
-    int progress = 90;
-    /**
-     * Creates new form MainForm
-     */
+    
+    // Creates new form MainForm
     public MainForm() {
         initComponents();
     }
@@ -237,22 +233,19 @@ public class MainForm extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         jProgressBar1.setIndeterminate(true);
-        HtmlParser parse = new HtmlParser(tfUser.getText(),pfPass.getText(),site);
+        HtmlParser parse = new HtmlParser(tfUser.getText(),pfPass.getText(),SITE);
         ExecutorService executor = Executors.newFixedThreadPool(5);
         
         // Runnable, return void, submit and run the task async
-        executor.submit(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Start parser Task");
-                String data = parse.getData();
-                if(data.equals("error")|| data.isEmpty()){
-                    lblStatus.setText("אין אינטרנט, או שם משתמש וסיסמה לא נכונים");
-                }else{
-                    lblStatus.setText("נתונים הועדכנו בהצלחה!");
-                }
-                jProgressBar1.setIndeterminate(false);
+        executor.submit(() -> {
+            System.out.println("Start parser Task");
+            String data1 = parse.getData();
+            if (data1.equals("error") || data1.isEmpty()) {
+                lblStatus.setText("אין אינטרנט, או שם משתמש וסיסמה לא נכונים");
+            } else {
+                lblStatus.setText("נתונים הועדכנו בהצלחה!");
             }
+            jProgressBar1.setIndeterminate(false);
         });
         
         //String data = parse.getData();
@@ -275,21 +268,13 @@ public class MainForm extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainForm().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MainForm().setVisible(true);
         });
     }
 
