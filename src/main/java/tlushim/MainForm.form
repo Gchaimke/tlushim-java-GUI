@@ -4,6 +4,9 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="&#x5e0;&#x5d5;&#x5db;&#x5d7;&#x5d5;&#x5ea;"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[500, 500]"/>
     </Property>
@@ -28,8 +31,8 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Component id="spMonth" pref="471" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="spMonth" pref="455" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="pLogin" min="-2" max="-2" attributes="0"/>
           </Group>
           <Component id="pStatus" max="32767" attributes="0"/>
@@ -39,7 +42,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="spMonth" pref="545" max="32767" attributes="0"/>
+                  <Component id="spMonth" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pLogin" max="32767" attributes="0"/>
@@ -47,7 +50,6 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pStatus" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,6 +57,9 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="pLogin">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder justification="2" title="&#x5db;&#x5e0;&#x5d9;&#x5e1;&#x5d4; &#x5dc;- tlushim.co.il">
@@ -76,7 +81,7 @@
               <Component id="jLabel2" max="32767" attributes="0"/>
               <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
               <Component id="totalPanel" alignment="0" max="32767" attributes="0"/>
-              <Component id="jProgressBar1" alignment="0" pref="161" max="32767" attributes="0"/>
+              <Component id="jProgressBar1" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -95,8 +100,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jProgressBar1" min="-2" pref="26" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="totalPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="totalPanel" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -158,6 +162,9 @@
         </Component>
         <Container class="javax.swing.JPanel" name="totalPanel">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="99" type="rgb"/>
+            </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                 <TitledBorder justification="2" title="&#x5ea;&#x5d5;&#x5e6;&#x5d0;&#x5d5;&#x5ea;">
@@ -173,18 +180,24 @@
                   <Component id="totalHours" alignment="1" max="32767" attributes="0"/>
                   <Component id="lessHours" alignment="1" max="32767" attributes="0"/>
                   <Component id="moreHours" alignment="1" max="32767" attributes="0"/>
+                  <Component id="lblDate" alignment="1" pref="161" max="32767" attributes="0"/>
+                  <Component id="lblName" alignment="1" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblName" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblDate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="moreHours" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lessHours" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="totalHours" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="totalHours" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -195,7 +208,10 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="4"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="&#x5e9;&#x5e2;&#x5d5;&#x5ea; &#x5e0;&#x5d5;&#x5e1;&#x5e4;&#x5d5;&#x5ea;: 20:59"/>
               </Properties>
             </Component>
@@ -204,17 +220,41 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="4"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="66" red="ff" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="&#x5e9;&#x5e2;&#x5d5;&#x5ea; &#x5d7;&#x5e1;&#x5e8;&#x5d5;&#x5ea;: 10:50"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="totalHours">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="cc" red="0" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="&#x5d9;&#x5ea;&#x5e8;&#x5d4; 5:40 &#x5e9;&#x5e2;&#x5d5;&#x5ea;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblName">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="&#x5d9;&#x5ea;&#x5e8;&#x5d4; 5:40 &#x5e9;&#x5e2;&#x5d5;&#x5ea;"/>
+                <Property name="text" type="java.lang.String" value="&#x5e0;&#x5d5;&#x5db;&#x5d7;&#x5d5;&#x5ea; &#x5e9;&#x5dc; &#x5d7;&#x5d9;&#x5d9;&#x5dd; &#x5d2;&#x5d5;&#x5e8;&#x5d1;&#x5d5;&#x5d1;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDate">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="4"/>
+                <Property name="text" type="java.lang.String" value="&#x5e0;&#x5d7;&#x5d5;&#x5df; &#x5dc;&#x5ea;&#x5d0;&#x5e8;&#x5d9;&#x5da; 25.02.2020"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -224,6 +264,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JScrollPane" name="spMonth">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
@@ -233,6 +278,9 @@
         <Component class="javax.swing.JTable" name="tbMonth">
           <Properties>
             <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="12" style="1"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="30">
                 <Column editable="true" title="&#x5e1;&#x5da; &#x5d4;&#x5db;&#x5dc;" type="java.lang.Object"/>
@@ -250,6 +298,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="pStatus">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder justification="3" title="&#x5e1;&#x5d8;&#x5d8;&#x5d5;&#x5e1;">
@@ -276,6 +327,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblStatus">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
             </Property>

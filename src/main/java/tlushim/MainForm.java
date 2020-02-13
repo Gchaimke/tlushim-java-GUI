@@ -39,6 +39,8 @@ public class MainForm extends javax.swing.JFrame {
         moreHours = new javax.swing.JLabel();
         lessHours = new javax.swing.JLabel();
         totalHours = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
         spMonth = new javax.swing.JScrollPane();
         tbMonth = new javax.swing.JTable();
@@ -46,16 +48,18 @@ public class MainForm extends javax.swing.JFrame {
         lblStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("πεληεϊ");
+        setTitle("Χ Χ•Χ›Χ—Χ•Χª");
+        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(500, 500));
 
-        pLogin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "λπιρδ μ- tlushim.co.il", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        pLogin.setBackground(new java.awt.Color(255, 255, 255));
+        pLogin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Χ›Χ Χ™Χ΅Χ” Χ- tlushim.co.il", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
         pLogin.setMaximumSize(new java.awt.Dimension(50, 500));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setLabelFor(tfUser);
-        jLabel1.setText("ων ξωϊξω");
+        jLabel1.setText("Χ©Χ ΧΧ©ΧªΧΧ©");
 
         tfUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         tfUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -64,14 +68,14 @@ public class MainForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setLabelFor(pfPass);
-        jLabel2.setText("ριρξδ");
+        jLabel2.setText("Χ΅Χ™Χ΅ΧΧ”");
 
         pfPass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         pfPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         pfPass.setText("Sdrm1415");
 
         btnLogin.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnLogin.setText("λπιρδ");
+        btnLogin.setText("Χ›Χ Χ™Χ΅Χ”");
         btnLogin.setToolTipText("");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,19 +83,31 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        totalPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ϊεφΰεϊ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        totalPanel.setBackground(new java.awt.Color(153, 255, 255));
+        totalPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ΧªΧ•Χ¦ΧΧ•Χª", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         moreHours.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        moreHours.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        moreHours.setText("ωςεϊ περτεϊ: 20:59");
+        moreHours.setForeground(new java.awt.Color(51, 51, 255));
+        moreHours.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        moreHours.setText("Χ©ΧΆΧ•Χª Χ Χ•Χ΅Χ¤Χ•Χª: 20:59");
 
         lessHours.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lessHours.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lessHours.setText("ωςεϊ ηρψεϊ: 10:50");
+        lessHours.setForeground(new java.awt.Color(255, 102, 51));
+        lessHours.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lessHours.setText("Χ©ΧΆΧ•Χª Χ—Χ΅Χ¨Χ•Χª: 10:50");
 
-        totalHours.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        totalHours.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        totalHours.setText("ιϊψδ 5:40 ωςεϊ");
+        totalHours.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        totalHours.setForeground(new java.awt.Color(0, 204, 0));
+        totalHours.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        totalHours.setText("Χ™ΧªΧ¨Χ” 5:40 Χ©ΧΆΧ•Χª");
+
+        lblName.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblName.setText("Χ Χ•Χ›Χ—Χ•Χª Χ©Χ Χ—Χ™Χ™Χ Χ’Χ•Χ¨Χ‘Χ•Χ‘");
+
+        lblDate.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDate.setText("Χ Χ—Χ•Χ ΧΧªΧΧ¨Χ™Χ 25.02.2020");
 
         javax.swing.GroupLayout totalPanelLayout = new javax.swing.GroupLayout(totalPanel);
         totalPanel.setLayout(totalPanelLayout);
@@ -100,17 +116,23 @@ public class MainForm extends javax.swing.JFrame {
             .addComponent(totalHours, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lessHours, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(moreHours, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+            .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         totalPanelLayout.setVerticalGroup(
             totalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(totalPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(lblName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDate)
+                .addGap(27, 27, 27)
                 .addComponent(moreHours)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lessHours)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(totalHours)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(52, 52, 52))
         );
 
         javax.swing.GroupLayout pLoginLayout = new javax.swing.GroupLayout(pLogin);
@@ -123,7 +145,7 @@ public class MainForm extends javax.swing.JFrame {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(totalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pLoginLayout.setVerticalGroup(
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,11 +163,13 @@ public class MainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(totalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(totalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        spMonth.setBackground(new java.awt.Color(255, 255, 255));
+
         tbMonth.setAutoCreateRowSorter(true);
+        tbMonth.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         tbMonth.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -180,16 +204,18 @@ public class MainForm extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ρκ δλμ", "ιφιΰδ", "λπιρδ", "ιεν"
+                "Χ΅Χ Χ”Χ›Χ", "Χ™Χ¦Χ™ΧΧ”", "Χ›Χ Χ™Χ΅Χ”", "Χ™Χ•Χ"
             }
         ));
         tbMonth.setNextFocusableComponent(btnLogin);
         spMonth.setViewportView(tbMonth);
 
-        pStatus.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ρθθερ", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        pStatus.setBackground(new java.awt.Color(255, 255, 255));
+        pStatus.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Χ΅ΧΧΧ•Χ΅", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         pStatus.setAlignmentX(0.0F);
         pStatus.setAlignmentY(0.0F);
 
+        lblStatus.setBackground(new java.awt.Color(255, 255, 255));
         lblStatus.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
@@ -209,8 +235,8 @@ public class MainForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(spMonth, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(spMonth, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(pStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -218,13 +244,12 @@ public class MainForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spMonth, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+                    .addComponent(spMonth)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(pLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(pStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -241,9 +266,9 @@ public class MainForm extends javax.swing.JFrame {
             System.out.println("Start parser Task");
             String data1 = parse.getData();
             if (data1.equals("error") || data1.isEmpty()) {
-                lblStatus.setText("ΰιο ΰιπθψπθ, ΰε ων ξωϊξω εριρξδ μΰ πλεπιν");
+                lblStatus.setText("ΧΧ™Χ ΧΧ™Χ ΧΧ¨Χ Χ, ΧΧ• Χ©Χ ΧΧ©ΧªΧΧ© Χ•Χ΅Χ™Χ΅ΧΧ” ΧΧ Χ Χ›Χ•Χ Χ™Χ!");
             } else {
-                lblStatus.setText("πϊεπιν δεςγλπε αδφμηδ!");
+                lblStatus.setText("Χ ΧªΧ•Χ Χ™Χ Χ”Χ•ΧΆΧ“Χ›Χ Χ• Χ‘Χ”Χ¦ΧΧ—Χ”!");
             }
             jProgressBar1.setIndeterminate(false);
         });
@@ -283,6 +308,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lessHours;
     private javax.swing.JLabel moreHours;

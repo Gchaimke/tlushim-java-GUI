@@ -97,7 +97,7 @@ public class HtmlParser
             for (int i = 0; i < rows.size(); i++) {
                 StringBuilder tmpString = new StringBuilder();
                 for (Element cell : rows.get(i).getAllElements()) {
-                    //old cells cleaner : if (!cell.text().isEmpty() && !cell.text().equals(":") &&!cell.text().equals("\r") && !cell.text().equals("\r\n") && !cell.text().equals("\n") && !cell.text().equals(" ") && !cell.text().contains("øâéì") && !cell.text().contains("0.50") &&  !cell.text().contains("8.40") &&  !row.text().contains("ùéùé") &&  !row.text().contains("ùáú") &&  !cell.text().contains("úéàåø"))
+                    //old cells cleaner : if (!cell.text().isEmpty() && !cell.text().equals(":") &&!cell.text().equals("\r") && !cell.text().equals("\r\n") && !cell.text().equals("\n") && !cell.text().equals(" ") && !cell.text().contains("×¨×’×™×œ") && !cell.text().contains("0.50") &&  !cell.text().contains("8.40") &&  !row.text().contains("×©×™×©×™") &&  !row.text().contains("×©×‘×ª") &&  !cell.text().contains("×ª×™××•×¨"))
                     tmpString.append(",").append(cell.text());
                 }
                 cleanCells.append("\n").append(tmpString);

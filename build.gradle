@@ -3,7 +3,7 @@ apply plugin: 'jacoco'
 apply plugin: 'application'
 
 
-mainClassName = 'tlushim.Main'
+mainClassName = 'tlushim.MainForm'
 
 repositories {
     jcenter()
