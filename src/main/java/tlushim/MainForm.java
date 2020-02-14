@@ -6,6 +6,7 @@
 package tlushim;
 
 import java.util.concurrent.*;
+import java.util.prefs.Preferences;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -16,13 +17,20 @@ public class MainForm extends javax.swing.JFrame {
     private static final String SITE = "https://www.tlushim.co.il/main.php?op=start";
     private final DefaultTableModel dtm;
     private static final String HEADER[] = new String[] { "סך הכל","יציא", "כניסה", "יום","תאריך" };
+    // Preference keys
+    final String PREF_USER = "username";
+    final String PREF_PASS = "pass";
+    Preferences prefs;
 
     private String data;
     
     // Creates new form MainForm
     public MainForm() {
         this.dtm = new DefaultTableModel(0, 0);
+        // Retrieve the user preference node for the package tlushim
+        prefs = Preferences.userNodeForPackage(tlushim.MainForm.class);
         initComponents();
+        getSettings();
     }
     
     public static String [][] to2dim (String source, String outerdelim, String innerdelim) {
@@ -166,7 +174,6 @@ public class MainForm extends javax.swing.JFrame {
 
         tfUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         tfUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfUser.setText("326988425");
         tfUser.setNextFocusableComponent(pfPass);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -176,7 +183,6 @@ public class MainForm extends javax.swing.JFrame {
 
         pfPass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         pfPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pfPass.setText("Sdrm1415");
         pfPass.setNextFocusableComponent(btnLogin);
 
         btnLogin.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -246,10 +252,10 @@ public class MainForm extends javax.swing.JFrame {
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(totalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLoginLayout.createSequentialGroup()
                 .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfUser, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                    .addComponent(tfUser)
                     .addComponent(pfPass))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -369,9 +375,10 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
+        saveSettings();
         jProgressBar1.setIndeterminate(true);
-        HtmlParser parse = new HtmlParser(tfUser.getText(),pfPass.getText(),SITE);
+        String pass = new String(pfPass.getPassword());
+        HtmlParser parse = new HtmlParser(tfUser.getText(),pass,SITE);
         ExecutorService executor = Executors.newFixedThreadPool(5);
         // Runnable, return void, submit and run the task async
         executor.submit(() -> {
@@ -385,11 +392,23 @@ public class MainForm extends javax.swing.JFrame {
             }
             jProgressBar1.setIndeterminate(false);
         });
-        
-        //String data = parse.getData();
-        
     }//GEN-LAST:event_btnLoginActionPerformed
-
+    
+    
+    private void saveSettings(){
+        // Set the value of the preference
+        prefs.put(PREF_USER, tfUser.getText());
+        String pass = new String(pfPass.getPassword());
+        prefs.put(PREF_PASS, pass);
+    }
+    
+    private void getSettings(){
+        // Get the value of the preference;
+        // default value is returned if the preference does not exist
+        String defaultValue = "";
+        tfUser.setText(prefs.get(PREF_USER, defaultValue));
+        pfPass.setText(prefs.get(PREF_PASS, defaultValue));
+    }
     /**
      * @param args the command line arguments
      */
