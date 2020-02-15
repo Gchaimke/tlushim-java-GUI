@@ -5,13 +5,16 @@
  */
 package tlushim;
 
+import java.util.Calendar;
 import java.util.concurrent.*;
 import java.util.prefs.Preferences;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -35,8 +38,18 @@ public class MainForm extends javax.swing.JFrame {
         // Retrieve the user preference node for the package tlushim
         prefs = Preferences.userNodeForPackage(tlushim.MainForm.class);
         initComponents();
+        
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        String[] years = {year+"",(year-1)+"",(year-2)+""};
+        DefaultComboBoxModel yearModel = new DefaultComboBoxModel( years );
+        cbYears.setModel( yearModel );
+        
+        String[] month = {"01","02","03","04","05","06","07","08","09","10","11","12",};
+        DefaultComboBoxModel monthModel = new DefaultComboBoxModel( month );
+        cbMoth.setModel( monthModel );
     }
     
+        
     public static String [][] to2dim (String source, String outerdelim, String innerdelim) {
         // outerdelim may be a group of characters
         String [] sOuter = source.split ("[" + outerdelim + "]");
@@ -121,6 +134,15 @@ public class MainForm extends javax.swing.JFrame {
                 totalHours.setText("יתרה " + sFromD(sum) +" שעות");
             }
         }
+        alignTable();
+    }
+    
+    void alignTable(){
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        for(int i =0 ; i <4;i++){
+            tbMonth.getColumnModel().getColumn(i).setCellRenderer( centerRenderer );
+        }
     }
     
      static String sFromD(Double time){
@@ -153,6 +175,9 @@ public class MainForm extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
         btnLogaut = new javax.swing.JButton();
         btnLoginDialog = new javax.swing.JButton();
+        cbYears = new javax.swing.JComboBox<>();
+        cbMoth = new javax.swing.JComboBox<>();
+        btnGetPrev = new javax.swing.JButton();
         spMonth = new javax.swing.JScrollPane();
         tbMonth = new javax.swing.JTable();
         pStatus = new javax.swing.JPanel();
@@ -244,17 +269,31 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        btnGetPrev.setText("הצג");
+        btnGetPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGetPrevActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pLoginLayout = new javax.swing.GroupLayout(pLogin);
         pLogin.setLayout(pLoginLayout);
         pLoginLayout.setHorizontalGroup(
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(totalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-            .addGroup(pLoginLayout.createSequentialGroup()
-                .addComponent(btnLogaut)
+            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLoginLayout.createSequentialGroup()
+                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLogaut)
+                    .addGroup(pLoginLayout.createSequentialGroup()
+                        .addComponent(cbYears, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbMoth, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLoginDialog))
+                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLoginDialog)
+                    .addComponent(btnGetPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         pLoginLayout.setVerticalGroup(
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +304,12 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbMoth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGetPrev))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogaut)
                     .addComponent(btnLoginDialog)))
@@ -277,7 +321,7 @@ public class MainForm extends javax.swing.JFrame {
         tbMonth.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         tbMonth.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
+                {null, null, null, "", ""},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -315,6 +359,7 @@ public class MainForm extends javax.swing.JFrame {
         tbMonth.setRowHeight(25);
         tbMonth.setShowGrid(true);
         tbMonth.setShowVerticalLines(false);
+        tbMonth.getTableHeader().setReorderingAllowed(false);
         spMonth.setViewportView(tbMonth);
 
         pStatus.setBackground(new java.awt.Color(255, 255, 255));
@@ -343,7 +388,7 @@ public class MainForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spMonth, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                .addComponent(spMonth, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(pStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -418,6 +463,29 @@ public class MainForm extends javax.swing.JFrame {
         prefs.put(PREF_PASS, "");
     }//GEN-LAST:event_btnLogautActionPerformed
 
+    private void btnGetPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetPrevActionPerformed
+        // TODO add your handling code here:
+        String defaultValue = "";
+        jProgressBar1.setIndeterminate(true);
+        String year = String.valueOf(cbYears.getSelectedItem());
+        String month = String.valueOf(cbMoth.getSelectedItem());
+        String prevGetMonth = "https://www.tlushim.co.il/main.php?op=atnd&month="+year+"_"+month;
+        HtmlParser parse = new HtmlParser(prefs.get(PREF_USER, defaultValue),prefs.get(PREF_PASS, defaultValue),prevGetMonth);
+        ExecutorService executor = Executors.newFixedThreadPool(5);
+        // Runnable, return void, submit and run the task async
+        executor.submit(() -> {
+            System.out.println("Start parser Task");
+            String data1 = parse.getData();
+            if (data1.equals("error") || data1.isEmpty()) {
+                lblStatus.setText("אין אינטרנט, או שם משתמש וסיסמה לא נכונים!");
+            } else {
+                getResult(data1);
+                lblStatus.setText("נתונים עודכנו בהצלחה!");
+            }
+            jProgressBar1.setIndeterminate(false);
+        });
+    }//GEN-LAST:event_btnGetPrevActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -428,10 +496,14 @@ public class MainForm extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGetPrev;
     private javax.swing.JButton btnLogaut;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnLoginDialog;
+    private javax.swing.JComboBox<String> cbMoth;
+    private javax.swing.JComboBox<String> cbYears;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblName;
