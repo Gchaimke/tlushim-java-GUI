@@ -29,8 +29,6 @@ public class MainForm extends javax.swing.JFrame {
     final String PREF_USER = "username";
     final String PREF_PASS = "pass";
     Preferences prefs;
-
-    private String data;
     
     // Creates new form MainForm
     public MainForm() {
