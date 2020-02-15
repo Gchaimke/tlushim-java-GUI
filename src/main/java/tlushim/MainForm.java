@@ -7,6 +7,11 @@ package tlushim;
 
 import java.util.concurrent.*;
 import java.util.prefs.Preferences;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -30,7 +35,6 @@ public class MainForm extends javax.swing.JFrame {
         // Retrieve the user preference node for the package tlushim
         prefs = Preferences.userNodeForPackage(tlushim.MainForm.class);
         initComponents();
-        getSettings();
     }
     
     public static String [][] to2dim (String source, String outerdelim, String innerdelim) {
@@ -139,10 +143,6 @@ public class MainForm extends javax.swing.JFrame {
     private void initComponents() {
 
         pLogin = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        tfUser = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        pfPass = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
         totalPanel = new javax.swing.JPanel();
         moreHours = new javax.swing.JLabel();
@@ -151,6 +151,8 @@ public class MainForm extends javax.swing.JFrame {
         lblName = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
+        btnLogaut = new javax.swing.JButton();
+        btnLoginDialog = new javax.swing.JButton();
         spMonth = new javax.swing.JScrollPane();
         tbMonth = new javax.swing.JTable();
         pStatus = new javax.swing.JPanel();
@@ -164,26 +166,8 @@ public class MainForm extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(500, 500));
 
         pLogin.setBackground(new java.awt.Color(255, 255, 255));
-        pLogin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "כניסה ל- tlushim.co.il", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        pLogin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "נוכחות - tlushim.co.il", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
         pLogin.setMaximumSize(new java.awt.Dimension(50, 500));
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setLabelFor(tfUser);
-        jLabel1.setText("שם משתמש");
-
-        tfUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        tfUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfUser.setNextFocusableComponent(pfPass);
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setLabelFor(pfPass);
-        jLabel2.setText("סיסמה");
-
-        pfPass.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        pfPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pfPass.setNextFocusableComponent(btnLogin);
 
         btnLogin.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnLogin.setText("קבל נתונים");
@@ -241,10 +225,24 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(moreHours)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lessHours)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(totalHours)
                 .addGap(52, 52, 52))
         );
+
+        btnLogaut.setText("יציאה");
+        btnLogaut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogautActionPerformed(evt);
+            }
+        });
+
+        btnLoginDialog.setText("כניסה");
+        btnLoginDialog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginDialogActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pLoginLayout = new javax.swing.GroupLayout(pLogin);
         pLogin.setLayout(pLoginLayout);
@@ -253,33 +251,24 @@ public class MainForm extends javax.swing.JFrame {
             .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(totalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLoginLayout.createSequentialGroup()
-                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfUser)
-                    .addComponent(pfPass))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(pLoginLayout.createSequentialGroup()
+                .addComponent(btnLogaut)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLoginDialog))
         );
         pLoginLayout.setVerticalGroup(
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLoginLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tfUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                .addComponent(totalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(totalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addGroup(pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLogaut)
+                    .addComponent(btnLoginDialog)))
         );
 
         spMonth.setBackground(new java.awt.Color(255, 255, 255));
@@ -364,7 +353,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spMonth, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                    .addComponent(spMonth)
                     .addComponent(pLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -375,10 +364,9 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        saveSettings();
+        String defaultValue = "";
         jProgressBar1.setIndeterminate(true);
-        String pass = new String(pfPass.getPassword());
-        HtmlParser parse = new HtmlParser(tfUser.getText(),pass,SITE);
+        HtmlParser parse = new HtmlParser(prefs.get(PREF_USER, defaultValue),prefs.get(PREF_PASS, defaultValue),SITE);
         ExecutorService executor = Executors.newFixedThreadPool(5);
         // Runnable, return void, submit and run the task async
         executor.submit(() -> {
@@ -393,42 +381,47 @@ public class MainForm extends javax.swing.JFrame {
             jProgressBar1.setIndeterminate(false);
         });
     }//GEN-LAST:event_btnLoginActionPerformed
-    
-    
-    private void saveSettings(){
-        // Set the value of the preference
-        prefs.put(PREF_USER, tfUser.getText());
-        String pass = new String(pfPass.getPassword());
-        prefs.put(PREF_PASS, pass);
-    }
-    
-    private void getSettings(){
-        // Get the value of the preference;
-        // default value is returned if the preference does not exist
+
+    private void btnLoginDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginDialogActionPerformed
+        // TODO add your handling code here:
         String defaultValue = "";
-        tfUser.setText(prefs.get(PREF_USER, defaultValue));
-        pfPass.setText(prefs.get(PREF_PASS, defaultValue));
-    }
+        JTextField userName = new JTextField();
+        userName.setText(prefs.get(PREF_USER, defaultValue));
+        JLabel lblUsername = new JLabel("שם משתמש");
+        JPasswordField password = new JPasswordField();
+        password.setText(prefs.get(PREF_PASS, defaultValue));
+        JLabel lblPass = new JLabel("סיסמה");
+        userName.setHorizontalAlignment(JTextField.CENTER);
+        lblUsername.setHorizontalAlignment(JTextField.CENTER);
+        password.setHorizontalAlignment(JTextField.CENTER);
+        lblPass.setHorizontalAlignment(JTextField.CENTER);
+        final JComponent[] inputs = new JComponent[] {
+        lblUsername,
+        userName,
+        lblPass,
+        password
+        };
+        int result = JOptionPane.showConfirmDialog(null, inputs, "פרטי כניסה", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            String pass = new String(password.getPassword());
+            prefs.put(PREF_USER, userName.getText());
+            prefs.put(PREF_PASS, pass);
+            btnLoginActionPerformed(evt);
+        } else {
+            System.out.println("User canceled / closed the dialog, result = " + result);
+        }
+    }//GEN-LAST:event_btnLoginDialogActionPerformed
+
+    private void btnLogautActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogautActionPerformed
+        // TODO add your handling code here:
+        prefs.put(PREF_USER, "");
+        prefs.put(PREF_PASS, "");
+    }//GEN-LAST:event_btnLogautActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new MainForm().setVisible(true);
@@ -436,9 +429,9 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogaut;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnLoginDialog;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblName;
@@ -447,10 +440,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel moreHours;
     private javax.swing.JPanel pLogin;
     private javax.swing.JPanel pStatus;
-    private javax.swing.JPasswordField pfPass;
     private javax.swing.JScrollPane spMonth;
     private javax.swing.JTable tbMonth;
-    private javax.swing.JTextField tfUser;
     private javax.swing.JLabel totalHours;
     private javax.swing.JPanel totalPanel;
     // End of variables declaration//GEN-END:variables
