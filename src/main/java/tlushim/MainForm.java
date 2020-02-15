@@ -138,7 +138,7 @@ public class MainForm extends javax.swing.JFrame {
     void alignTable(){
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
-        for(int i =0 ; i <4;i++){
+        for(int i =0 ; i <5;i++){
             tbMonth.getColumnModel().getColumn(i).setCellRenderer( centerRenderer );
         }
     }
