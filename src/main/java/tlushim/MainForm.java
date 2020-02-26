@@ -10,6 +10,7 @@ import java.util.concurrent.*;
 import java.util.prefs.Preferences;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -45,6 +46,7 @@ public class MainForm extends javax.swing.JFrame {
         String[] month = {"01","02","03","04","05","06","07","08","09","10","11","12",};
         DefaultComboBoxModel monthModel = new DefaultComboBoxModel( month );
         cbMoth.setModel( monthModel );
+        
     }
     
         
@@ -183,10 +185,12 @@ public class MainForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("נוכחות");
+        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         setMinimumSize(new java.awt.Dimension(500, 500));
+        setPreferredSize(new java.awt.Dimension(600, 650));
 
         pLogin.setBackground(new java.awt.Color(255, 255, 255));
         pLogin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "נוכחות - tlushim.co.il", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
@@ -355,7 +359,6 @@ public class MainForm extends javax.swing.JFrame {
         tbMonth.setNextFocusableComponent(btnLogin);
         tbMonth.setOpaque(false);
         tbMonth.setRowHeight(25);
-        tbMonth.setShowGrid(true);
         tbMonth.setShowVerticalLines(false);
         tbMonth.getTableHeader().setReorderingAllowed(false);
         spMonth.setViewportView(tbMonth);
@@ -401,6 +404,10 @@ public class MainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        getAccessibleContext().setAccessibleName("jFrame");
+        getAccessibleContext().setAccessibleDescription("");
+        getAccessibleContext().setAccessibleParent(this);
 
         pack();
         setLocationRelativeTo(null);
@@ -492,6 +499,7 @@ public class MainForm extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             new MainForm().setVisible(true);
         });
+        
     }
 
 
