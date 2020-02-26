@@ -2,14 +2,24 @@ apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'application'
 
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'tlushim.MainForm'
+}
 
 mainClassName = 'tlushim.MainForm'
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
     testCompile 'junit:junit:4.12'
     implementation 'org.jsoup:jsoup:1.12.1'
+}
+
+ 
+jar {
+    manifest {
+        attributes 'Main-Class': 'tlushim.MainForm'
+    }
 }
